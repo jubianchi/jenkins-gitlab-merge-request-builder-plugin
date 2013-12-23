@@ -1,0 +1,41 @@
+<style>
+#placeholders, #placeholders th, #placeholders td {
+    border: 1px solid black;
+    border-collapse:collapse;
+    padding: 5px;
+}
+</style>
+<div>
+    <h3>Message sent when Jenkins build succeeds</h3>
+
+    <table id="placeholders">
+        <thead>
+            <tr>
+                <th>Placeholder</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>#build.duration#</td>
+                <td>Build duration in seconds (Example: <code>0,42 s</code>)</td>
+            </tr>
+            <tr>
+                <td>#build.ext_id#</td>
+                <td>Build external ID (Example: <code>job-name#42</code>)</td>
+            </tr>
+            <tr>
+                <td>#build.full_name#</td>
+                <td>Build full name (Example: <code>job-name #42</code>)</td>
+            </tr>
+            <tr>
+                <td>#build.url#</td>
+                <td>Build URLM (Example: <code>http://jenkins-host.tld/job/job-name/42/</code>)</td>
+            </tr>
+            <tr>
+                <td>#build.number#</td>
+                <td>Build number (Example: <code>42</code>)</td>
+            </tr>
+        </tbody>
+  </table>
+</div>

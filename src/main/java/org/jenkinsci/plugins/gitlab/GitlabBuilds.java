@@ -71,9 +71,15 @@ public class GitlabBuilds {
             stringBuilder.append(_trigger.getDescriptor().getFailureMessage());
         }
 
-        String buildUrl = Jenkins.getInstance().getRootUrl() + build.getUrl();
-        stringBuilder.append("\nBuild results available at: ").append(buildUrl);
-        _repository.createNote(cause.getMergeRequestId(), stringBuilder.toString());
+        String note = stringBuilder.toString()
+                .replaceAll("#build\\.duration#", build.getDurationString())
+                .replaceAll("#build\\.ext_id#", build.getExternalizableId())
+                .replaceAll("#build\\.full_name#", build.getFullDisplayName())
+                .replaceAll("#build\\.url#", Jenkins.getInstance().getRootUrl() + build.getUrl())
+                .replaceAll("#build\\.number#", Integer.toString(build.getNumber()))
+        ;
+
+        _repository.createNote(cause.getMergeRequestId(), note);
     }
 
     private String getOnStartedMessage(GitlabCause cause) {

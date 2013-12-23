@@ -51,6 +51,7 @@ public class GitlabMergeRequestBuilder {
         _repository = new GitlabRepository(_trigger.getProjectPath(), this, _mergeRequests);
         _repository.init();
         _builds = new GitlabBuilds(_trigger, _repository);
+
         return this;
     }
 
